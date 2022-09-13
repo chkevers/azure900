@@ -1,0 +1,144 @@
+{
+	"name": "LoopOverTableSpecs",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('select SourceTable, SourceSchema, sqlquery from staging.queries where SourceSchema =''',pipeline().parameters.Schema,'''')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Sql_DB_Ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": {
+								"value": "@pipeline().parameters.Schema",
+								"type": "Expression"
+							},
+							"Table": "_N/A"
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Sql_DB_Ds",
+									"type": "DatasetReference",
+									"parameters": {
+										"Schema": {
+											"value": "@item().SourceSchema",
+											"type": "Expression"
+										},
+										"Table": {
+											"value": "@item().SourceTable",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Parquet1",
+									"type": "DatasetReference",
+									"parameters": {
+										"Filename": {
+											"value": "@item().SourceTable",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"Schema": {
+				"type": "string",
+				"defaultValue": "decrypt"
+			}
+		},
+		"variables": {
+			"DatasetColor": {
+				"type": "Array"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-09T14:22:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

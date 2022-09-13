@@ -1,0 +1,123 @@
+{
+	"name": "GetMetadata",
+	"properties": {
+		"activities": [
+			{
+				"name": "ExtractMetadataTables",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT [TABLE_CATALOG]\n      ,[TABLE_SCHEMA]\n      ,[TABLE_NAME]\n      ,[TABLE_TYPE]\n  FROM [INFORMATION_SCHEMA].[TABLES]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "delete \n  FROM [SINK].[tables_metadata]",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sql_DB_Ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "information_schema",
+							"Table": "tables"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sql_DB_Ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "SINK",
+							"Table": "tables_metadata"
+						}
+					}
+				]
+			},
+			{
+				"name": "ExtractMetadataColumns",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sql_DB_Ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "information_schema",
+							"Table": "columns"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sql_DB_Ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "SINK",
+							"Table": "columns_metadata"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-09-08T10:53:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

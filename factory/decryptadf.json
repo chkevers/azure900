@@ -1,0 +1,9 @@
+{
+	"name": "decryptadf",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f222dea8-06e4-4835-ae59-a047e18eef7d",
+		"tenantId": "298296dc-ebf4-4fdf-817e-11533c0c670c"
+	}
+}
