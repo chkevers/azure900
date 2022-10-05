@@ -1,5 +1,6 @@
 {
 	"name": "OData1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"parameters": {
 			"token": {
@@ -10,8 +11,13 @@
 		"type": "OData",
 		"typeProperties": {
 			"url": " https://tessenderlogroup-pilot.csod.com/services/api/x/odata/api/views",
-			"authenticationType": "Anonymous"
+			"authenticationType": "Anonymous",
+			"authHeaders": {
+				"Authorization": {
+					"type": "SecureString",
+					"value": "**********"
+				}
+			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }
