@@ -14,8 +14,8 @@
 			"authenticationType": "Anonymous",
 			"authHeaders": {
 				"Authorization": {
-					"type": "SecureString",
-					"value": "**********"
+					"type": "Expression",
+					"value": "@linkedService().token"
 				}
 			}
 		}
