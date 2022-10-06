@@ -22,6 +22,30 @@
 					},
 					"body": "grant_type=client_credentials&client_id=078a4010-f8a4-4b6e-846f-75416b5f0b76&client_secret=ksJ8Q~TTWp10p.2towAjtHj.Q5izAXYtMUsJKduK&resource=https%3A%2F%2Fgraph.microsoft.com\n"
 				}
+			},
+			{
+				"name": "UpdateLinkedService",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "GetADToken",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/0035fb82-9251-4c65-afd3-ee139dfb4466/resourceGroups/decryptazure/providers/Microsoft.DataFactory/factories/decryptadf/linkedservices/Odata1?api-version=2018-06-01",
+					"method": "PUT"
+				}
 			}
 		],
 		"annotations": []
