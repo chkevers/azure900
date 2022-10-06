@@ -1,17 +1,12 @@
 {
 	"name": "OData1",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "OData",
 		"typeProperties": {
 			"url": " https://tessenderlogroup-pilot.csod.com/services/api/x/odata/api/views",
-			"authenticationType": "AadServicePrincipal",
-			"tenant": "298296dc-ebf4-4fdf-817e-11533c0c670c",
-			"aadResourceId": "https://tessenderlogroup-pilot.csod.com/",
-			"aadServicePrincipalCredentialType": "ServicePrincipalKey",
-			"servicePrincipalId": "1d150e82-88e7-4060-bb62-377a8e4b4580",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDcyODFDOTA3LUE2QkMtNDhGRi1CMTNCLTRDMzQ2ODIwN0NCRV80ZjdiYmIwNi1mZTJlLTQ3ZWItOTMzMy0xZWQxOGYyYjFlMWUiDQp9"
+			"authenticationType": "Anonymous"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
