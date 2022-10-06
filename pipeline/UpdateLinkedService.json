@@ -44,7 +44,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"url": "https://management.azure.com/subscriptions/0035fb82-9251-4c65-afd3-ee139dfb4466/resourceGroups/decryptazure/providers/Microsoft.DataFactory/factories/decryptadf/linkedservices/Odata1?api-version=2018-06-01",
-					"method": "PUT"
+					"method": "PUT",
+					"headers": {
+						"Authorization": {
+							"value": "@concat(activity('GetADToken').output.token_type,' ',activity('GetADToken').output.access_token)",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
