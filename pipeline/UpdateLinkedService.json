@@ -50,6 +50,9 @@
 							"value": "@concat(activity('GetADToken').output.token_type,' ',activity('GetADToken').output.access_token)",
 							"type": "Expression"
 						}
+					},
+					"body": {
+						"name": "SuccessfullyRenamed"
 					}
 				}
 			}
