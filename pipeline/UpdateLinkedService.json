@@ -18,9 +18,14 @@
 					"url": "https://login.microsoftonline.com/298296dc-ebf4-4fdf-817e-11533c0c670c/oauth2/token",
 					"method": "POST",
 					"headers": {
-						"Content-Type": "application/x-www-form-urlencoded"
+						"Content-Type": "application/json"
 					},
-					"body": "{\n\"grant_type\":\"client_credentials\"\n\"client_id\":\"078a4010-f8a4-4b6e-846f-75416b5f0b76\"\n\"client_secret\":\"ksJ8Q~TTWp10p.2towAjtHj.Q5izAXYtMUsJKduK\"\n\"resource\":\"https%3A%2F%2Fgraph.microsoft.com\"\n}"
+					"body": {
+						"grant_type": "client_credentials",
+						"client_id": "078a4010-f8a4-4b6e-846f-75416b5f0b76",
+						"client_secret": "ksJ8Q~TTWp10p.2towAjtHj.Q5izAXYtMUsJKduK",
+						"resource": "https%3A%2F%2Fgraph.microsoft.com"
+					}
 				}
 			}
 		],
