@@ -1,28 +1,28 @@
 {
-	"name": "Parquet1",
+	"name": "DataLake_JSON",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"Filesystem": {
+			"FileSystem": {
+				"type": "string"
+			},
+			"FileName": {
 				"type": "string"
 			},
 			"Directory": {
 				"type": "string"
-			},
-			"Filename": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
-		"type": "Parquet",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().Filename",
+					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
 				"folderPath": {
@@ -30,13 +30,12 @@
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "@dataset().Filesystem",
+					"value": "@dataset().FileSystem",
 					"type": "Expression"
 				}
-			},
-			"compressionCodec": "snappy"
+			}
 		},
-		"schema": []
+		"schema": {}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

@@ -28,6 +28,12 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
 						"activity": "GetADToken",
 						"dependencyConditions": [
 							"Succeeded"
@@ -46,14 +52,127 @@
 					"url": "https://management.azure.com/subscriptions/0035fb82-9251-4c65-afd3-ee139dfb4466/resourceGroups/decryptazure/providers/Microsoft.DataFactory/factories/decryptadf/linkedservices/Odata1?api-version=2018-06-01",
 					"method": "PUT",
 					"headers": {
-						"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkZmMEJzLUp3YTB5LXdzQW4yUWpOU2FZRTFrUURyN3IxYUU5QUl5VmxvSmciLCJhbGciOiJSUzI1NiIsIng1dCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yOTgyOTZkYy1lYmY0LTRmZGYtODE3ZS0xMTUzM2MwYzY3MGMvIiwiaWF0IjoxNjY1MDYwMTY5LCJuYmYiOjE2NjUwNjAxNjksImV4cCI6MTY2NTA2NDA2OSwiYWlvIjoiRTJaZ1lJaXkvSmtwMWlreFFmaGhzNDdWMFU5Y0FBPT0iLCJhcHBfZGlzcGxheW5hbWUiOiJVcGRhdGVMaW5rZWRTZXJ2aWNlIiwiYXBwaWQiOiIwNzhhNDAxMC1mOGE0LTRiNmUtODQ2Zi03NTQxNmI1ZjBiNzYiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yOTgyOTZkYy1lYmY0LTRmZGYtODE3ZS0xMTUzM2MwYzY3MGMvIiwiaWR0eXAiOiJhcHAiLCJvaWQiOiI2ZGQzNTAxZi0xOTYwLTQ0OWUtYjY5Mi03OTBhMmNiMTZjMzMiLCJyaCI6IjAuQVRvQTNKYUNLZlRyMzAtQmZoRlRQQXhuREFNQUFBQUFBQUFBd0FBQUFBQUFBQUE2QUFBLiIsInN1YiI6IjZkZDM1MDFmLTE5NjAtNDQ5ZS1iNjkyLTc5MGEyY2IxNmMzMyIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJFVSIsInRpZCI6IjI5ODI5NmRjLWViZjQtNGZkZi04MTdlLTExNTMzYzBjNjcwYyIsInV0aSI6ImU1WFZtaGw3TVVtczNDTmJsNDVhQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbIjA5OTdhMWQwLTBkMWQtNGFjYi1iNDA4LWQ1Y2E3MzEyMWU5MCJdLCJ4bXNfdGNkdCI6MTU1NDk1NzIxOSwieG1zX3RkYnIiOiJFVSJ9.HzCW7Jx_xy5zu1SMDidVfBYq5dBROGDLhiW9GLGxGUGQZFYFTdLpSe5Pn0V-UmEjakNMjYJ5Z_vB_XPylFh5DO1w_PXkZV5LTIdRl1i78zlnqK2vxEm8xdC_q6OVlx1fFVv89e7PZFzHBxiG44u8bJVCNUvIisSvo-81FuRULzoVilC40Ju5dnNvT49QzZGm_bf-03a7P39MFGNJysZzB_Fy2tKEpjh3pEdHFYGl1-iUfGhdm3u5Vl2kFn6hSfIUrJQg556YojsGjaD6b14ftKjwybQqWr8j74ycKpSTgGDejNJGxv7M2Wcaz3C7AGfrzwLMwep9pTu4Cxy7b_qfTQ"
+						"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjk4Mjk2ZGMtZWJmNC00ZmRmLTgxN2UtMTE1MzNjMGM2NzBjLyIsImlhdCI6MTY2NTExNzk1OSwibmJmIjoxNjY1MTE3OTU5LCJleHAiOjE2NjUxMjE4NTksImFpbyI6IkUyWmdZQWlXWG5mVDlhQUY2NVh2djI5TTNUVWxCZ0E9IiwiYXBwaWQiOiJmOTA0NGQxNy02NGQwLTRjZTYtYjZhNi1mNGViYTllZmVjMDYiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yOTgyOTZkYy1lYmY0LTRmZGYtODE3ZS0xMTUzM2MwYzY3MGMvIiwiaWR0eXAiOiJhcHAiLCJvaWQiOiJkMzkwNTk3MS1mOTcxLTQ1N2QtYmIyOS03ZjA0NjI0MTczYzIiLCJyaCI6IjAuQVRvQTNKYUNLZlRyMzAtQmZoRlRQQXhuREVaSWYza0F1dGRQdWtQYXdmajJNQk02QUFBLiIsInN1YiI6ImQzOTA1OTcxLWY5NzEtNDU3ZC1iYjI5LTdmMDQ2MjQxNzNjMiIsInRpZCI6IjI5ODI5NmRjLWViZjQtNGZkZi04MTdlLTExNTMzYzBjNjcwYyIsInV0aSI6IktBVW91Wk1WaFVtd0hUMFd4RllCQUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfdGNkdCI6MTU1NDk1NzIxOX0.UdnUbsbIru587w2bnvABvm5CCzt3alwmjH80tJCnU_dHGMf-nnGjzhJ7khGYvTCkSgKVYscO7yQEdBUDWq5qEGl745PWJ1YgyKv6JodIWeR8es5ogfpuon33h37XboqOfE84EdSqQCtPzibhYwObba6LQrhHgNcStnS7EUJpMJOpfzK5MjgKL-1EaG1fM-c-PDPyK5-Q37ygWoFkc_eOA3CYOfZ10-x-lN_vyjvB7jveDMkHZeyV_o1REPpiZDl3g7bLo4ifqXPAx2BfGeDB-U2dBdBX2FpW_NzgDlMySGibl6eByehEoEcnapKt942e-e3zP0F7RjFOVSIUidYWGg"
 					},
 					"body": {
-						"name": "SuccessfullyRenamed"
+						"value": "{\n    \"type\": \"Microsoft.DataFactory/factories/linkedservices\",\n    \"properties\": {\n        \"annotations\": [],\n        \"type\": \"OData\",\n        \"typeProperties\": {\n            \"url\": \" https://tessenderlogroup-pilot.csod.com/services/api/x/odata/api/views\",\n            \"authenticationType\": \"Anonymous\",\n            \"authHeaders\": {\n                \"Authorization\": {\n                    \"type\": \"SecureString\",\n                    \"value\": \"@{variables('token')}\"\n                }\n            }\n        }\n    }\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "GetCSODToken",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://tessenderlogroup-pilot.csod.com/services/api/oauth2/token?Content-Type=application/json&cache-control=no-cache",
+					"method": "POST",
+					"headers": {
+						"Accept": "application/json"
+					},
+					"body": {
+						"clientId": "18n7745n5ams8",
+						"clientSecret": "535b7060ec3e9032a1dd317b9145ba0260f078a6156c082fc7d9cb97315eb93f",
+						"grantType": "client_credentials",
+						"scope": "all"
+					}
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "UpdateLinkedService",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ODataSource",
+						"httpRequestTimeout": "00:05:00"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ODataResource1",
+						"type": "DatasetReference",
+						"parameters": {
+							"view": "vw_rpt_applicant"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parquet1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Filesystem": "datalakedevck",
+							"Directory": "Downloaded",
+							"Filename": "bip.parquet"
+						}
+					}
+				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetCSODToken",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "token",
+					"value": {
+						"value": "@concat('Bearer ', activity('GetCSODToken').output.access_token)",
+						"type": "Expression"
 					}
 				}
 			}
 		],
-		"annotations": []
-	}
+		"variables": {
+			"token": {
+				"type": "String"
+			},
+			"adtoken": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-07T05:11:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

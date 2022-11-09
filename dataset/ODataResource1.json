@@ -1,0 +1,24 @@
+{
+	"name": "ODataResource1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Odata1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"view": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "ODataResource",
+		"schema": [],
+		"typeProperties": {
+			"path": {
+				"value": "@dataset().view",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
