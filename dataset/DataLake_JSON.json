@@ -35,7 +35,244 @@
 				}
 			}
 		},
-		"schema": {}
+		"schema": {
+			"type": "object",
+			"properties": {
+				"arraystring": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"user_id": {
+								"type": "integer"
+							},
+							"user_name_first": {
+								"type": "string"
+							},
+							"user_name_last": {
+								"type": "string"
+							},
+							"user_ref": {
+								"type": "string"
+							},
+							"user_login": {
+								"type": "string"
+							},
+							"user_email": {
+								"type": "string"
+							},
+							"user_absent": {
+								"type": "boolean"
+							},
+							"user_allow_reconcile": {
+								"type": "boolean"
+							},
+							"user_name_prefix": {
+								"type": "null"
+							},
+							"user_name_suffix": {
+								"type": "null"
+							},
+							"user_name_middle": {
+								"type": "string"
+							},
+							"user_status_id": {
+								"type": "integer"
+							},
+							"user_mgr_id": {
+								"type": "null"
+							},
+							"user_mgr_name_first": {
+								"type": "null"
+							},
+							"user_mgr_name_last": {
+								"type": "null"
+							},
+							"user_mgr_ref": {
+								"type": "null"
+							},
+							"user_mgr_email": {
+								"type": "null"
+							},
+							"user_mgr_mailstop": {
+								"type": "null"
+							},
+							"user_appr_id": {
+								"type": "integer"
+							},
+							"user_appr_name_first": {
+								"type": "null"
+							},
+							"user_appr_name_last": {
+								"type": "null"
+							},
+							"user_appr_ref": {
+								"type": "null"
+							},
+							"user_appr_mailstop": {
+								"type": "null"
+							},
+							"user_approvals": {
+								"type": "integer"
+							},
+							"user_country": {
+								"type": "null"
+							},
+							"user_address1": {
+								"type": "null"
+							},
+							"user_address2": {
+								"type": "null"
+							},
+							"user_mailstop": {
+								"type": "null"
+							},
+							"user_city": {
+								"type": "null"
+							},
+							"user_state": {
+								"type": "null"
+							},
+							"user_zip": {
+								"type": "null"
+							},
+							"user_hire_dt_orig": {
+								"type": "null"
+							},
+							"user_hire_dt_last": {
+								"type": "null"
+							},
+							"user_birth_dt": {
+								"type": "null"
+							},
+							"user_tenure_months": {
+								"type": "null"
+							},
+							"user_exempt": {
+								"type": "null"
+							},
+							"user_gender": {
+								"type": "null"
+							},
+							"user_ethnicity": {
+								"type": "null"
+							},
+							"user_company_no": {
+								"type": "null"
+							},
+							"user_phone_work": {
+								"type": "null"
+							},
+							"user_phone_home": {
+								"type": "null"
+							},
+							"user_phone_mobile": {
+								"type": "null"
+							},
+							"user_phone_fax": {
+								"type": "null"
+							},
+							"user_has_photo": {
+								"type": "null"
+							},
+							"applicant_archived_flag": {
+								"type": "boolean"
+							},
+							"user_last_login": {
+								"type": "string"
+							},
+							"user_i_mgr_id": {
+								"type": "null"
+							},
+							"indirect_manager_name": {
+								"type": "null"
+							},
+							"indirect_manager_ref": {
+								"type": "null"
+							},
+							"user_i_mgr_name_first": {
+								"type": "null"
+							},
+							"user_i_mgr_name_last": {
+								"type": "null"
+							},
+							"user_i_mgr_email": {
+								"type": "null"
+							},
+							"user_language_id": {
+								"type": "null"
+							},
+							"user_create_dt": {
+								"type": "string"
+							},
+							"user_guid": {
+								"type": "string"
+							},
+							"user_termination_dt": {
+								"type": "null"
+							},
+							"user_eligible_for_rehire": {
+								"type": "null"
+							},
+							"user_type": {
+								"type": "string"
+							},
+							"user_termination_type": {
+								"type": "null"
+							},
+							"user_sub_category_id": {
+								"type": "null"
+							},
+							"user_leave_reason_id": {
+								"type": "null"
+							},
+							"user_termination_reason_id": {
+								"type": "null"
+							},
+							"user_tax_override": {
+								"type": "null"
+							},
+							"user_tax_override_unit": {
+								"type": "null"
+							},
+							"user_vat_number": {
+								"type": "null"
+							},
+							"user_employment_status_id": {
+								"type": "null"
+							},
+							"user_category_id": {
+								"type": "null"
+							},
+							"user_local_system_id": {
+								"type": "null"
+							},
+							"user_personal_email": {
+								"type": "null"
+							},
+							"user_is_rehired_employee": {
+								"type": "null"
+							},
+							"user_modify_date": {
+								"type": "string"
+							},
+							"user_timezone_id": {
+								"type": "null"
+							},
+							"user_activation_dt": {
+								"type": "null"
+							},
+							"user_deactivation_dt": {
+								"type": "null"
+							},
+							"_last_touched_dt_utc": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
