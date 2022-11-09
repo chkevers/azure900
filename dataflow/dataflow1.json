@@ -12,8 +12,20 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          arraystring as (user_id as integer, user_name_first as string, user_name_last as string, user_ref as string, user_login as string, user_email as string, user_absent as boolean, user_allow_reconcile as boolean, user_name_prefix as string, user_name_suffix as string, user_name_middle as string, user_status_id as integer, user_mgr_id as string, user_mgr_name_first as string, user_mgr_name_last as string, user_mgr_ref as string, user_mgr_email as string, user_mgr_mailstop as string, user_appr_id as integer, user_appr_name_first as string, user_appr_name_last as string, user_appr_ref as string, user_appr_mailstop as string, user_approvals as integer, user_country as string, user_address1 as string, user_address2 as string, user_mailstop as string, user_city as string, user_state as string, user_zip as string, user_hire_dt_orig as string, user_hire_dt_last as string, user_birth_dt as string, user_tenure_months as string, user_exempt as string, user_gender as string, user_ethnicity as string, user_company_no as string, user_phone_work as string, user_phone_home as string, user_phone_mobile as string, user_phone_fax as string, user_has_photo as string, applicant_archived_flag as boolean, user_last_login as string, user_i_mgr_id as string, indirect_manager_name as string, indirect_manager_ref as string, user_i_mgr_name_first as string, user_i_mgr_name_last as string, user_i_mgr_email as string, user_language_id as string, user_create_dt as string, user_guid as string, user_termination_dt as string, user_eligible_for_rehire as string, user_type as string, user_termination_type as string, user_sub_category_id as string, user_leave_reason_id as string, user_termination_reason_id as string, user_tax_override as string, user_tax_override_unit as string, user_vat_number as string, user_employment_status_id as string, user_category_id as string, user_local_system_id as string, user_personal_email as string, user_is_rehired_employee as string, user_modify_date as string, user_timezone_id as string, user_activation_dt as string, user_deactivation_dt as string, {_last_touched_dt_utc} as string)[]",
@@ -21,7 +33,21 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'singleDocument') ~> source1"
+				"     documentForm: 'singleDocument') ~> source1",
+				"source1 foldDown(unroll(arraystring),",
+				"     mapColumn(",
+				"          arraystring",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
