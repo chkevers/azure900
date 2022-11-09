@@ -26,7 +26,7 @@
 							},
 							"sink1": {
 								"Filesystem": "datalakedevck",
-								"Directory": "ToBeLoaded",
+								"Directory": "ToBeLoaded/Dataflow",
 								"Filename": "Dataflow.parquet"
 							}
 						}
