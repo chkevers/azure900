@@ -49,7 +49,7 @@
 						"parameters": {
 							"FileSystem": "datalakedevck",
 							"FileName": {
-								"value": "@concat(pipeline().parameters.view_name,'.parquet')",
+								"value": "@concat(pipeline().parameters.view_name,'.json')",
 								"type": "Expression"
 							},
 							"Directory": "Downloaded"
