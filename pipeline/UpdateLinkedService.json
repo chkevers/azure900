@@ -52,7 +52,10 @@
 					"url": "https://management.azure.com/subscriptions/0035fb82-9251-4c65-afd3-ee139dfb4466/resourceGroups/decryptazure/providers/Microsoft.DataFactory/factories/decryptadf/linkedservices/Odata1?api-version=2018-06-01",
 					"method": "PUT",
 					"headers": {
-						"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjk4Mjk2ZGMtZWJmNC00ZmRmLTgxN2UtMTE1MzNjMGM2NzBjLyIsImlhdCI6MTY2NTExNzk1OSwibmJmIjoxNjY1MTE3OTU5LCJleHAiOjE2NjUxMjE4NTksImFpbyI6IkUyWmdZQWlXWG5mVDlhQUY2NVh2djI5TTNUVWxCZ0E9IiwiYXBwaWQiOiJmOTA0NGQxNy02NGQwLTRjZTYtYjZhNi1mNGViYTllZmVjMDYiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yOTgyOTZkYy1lYmY0LTRmZGYtODE3ZS0xMTUzM2MwYzY3MGMvIiwiaWR0eXAiOiJhcHAiLCJvaWQiOiJkMzkwNTk3MS1mOTcxLTQ1N2QtYmIyOS03ZjA0NjI0MTczYzIiLCJyaCI6IjAuQVRvQTNKYUNLZlRyMzAtQmZoRlRQQXhuREVaSWYza0F1dGRQdWtQYXdmajJNQk02QUFBLiIsInN1YiI6ImQzOTA1OTcxLWY5NzEtNDU3ZC1iYjI5LTdmMDQ2MjQxNzNjMiIsInRpZCI6IjI5ODI5NmRjLWViZjQtNGZkZi04MTdlLTExNTMzYzBjNjcwYyIsInV0aSI6IktBVW91Wk1WaFVtd0hUMFd4RllCQUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfdGNkdCI6MTU1NDk1NzIxOX0.UdnUbsbIru587w2bnvABvm5CCzt3alwmjH80tJCnU_dHGMf-nnGjzhJ7khGYvTCkSgKVYscO7yQEdBUDWq5qEGl745PWJ1YgyKv6JodIWeR8es5ogfpuon33h37XboqOfE84EdSqQCtPzibhYwObba6LQrhHgNcStnS7EUJpMJOpfzK5MjgKL-1EaG1fM-c-PDPyK5-Q37ygWoFkc_eOA3CYOfZ10-x-lN_vyjvB7jveDMkHZeyV_o1REPpiZDl3g7bLo4ifqXPAx2BfGeDB-U2dBdBX2FpW_NzgDlMySGibl6eByehEoEcnapKt942e-e3zP0F7RjFOVSIUidYWGg"
+						"Authorization": {
+							"value": "@activity('GetADToken').output.value",
+							"type": "Expression"
+						}
 					},
 					"body": {
 						"value": "{\n    \"type\": \"Microsoft.DataFactory/factories/linkedservices\",\n    \"properties\": {\n        \"annotations\": [],\n        \"type\": \"OData\",\n        \"typeProperties\": {\n            \"url\": \" https://tessenderlogroup-pilot.csod.com/services/api/x/odata/api/views\",\n            \"authenticationType\": \"Anonymous\",\n            \"authHeaders\": {\n                \"Authorization\": {\n                    \"type\": \"SecureString\",\n                    \"value\": \"@{variables('token')}\"\n                }\n            }\n        }\n    }\n}",
