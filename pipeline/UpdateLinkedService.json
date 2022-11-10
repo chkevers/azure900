@@ -167,7 +167,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "GetADToken",
+						"activity": "GetADToken_copy1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -177,7 +177,7 @@
 				"typeProperties": {
 					"variableName": "adtoken",
 					"value": {
-						"value": "@concat('Bearer ', activity('GetADToken').output.access_token)",
+						"value": "@concat('Bearer ', activity('GetADToken_copy1').output.access_token)",
 						"type": "Expression"
 					}
 				}
