@@ -119,7 +119,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Filesystem": "datalakedevck",
-							"Directory": "Downloaded",
+							"Directory": "ToBeLoaded",
 							"Filename": {
 								"value": "@concat(pipeline().parameters.view_name, '.parquet')",
 								"type": "Expression"
