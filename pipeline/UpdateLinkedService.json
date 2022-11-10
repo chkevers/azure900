@@ -126,7 +126,7 @@
 						"referenceName": "ODataResource1",
 						"type": "DatasetReference",
 						"parameters": {
-							"view": "vw_rpt_applicant"
+							"view": "vw_rpt_user"
 						}
 					}
 				],
