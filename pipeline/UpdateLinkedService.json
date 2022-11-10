@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://login.microsoftonline.com/97839224-6e54-474c-918f-b7ebadf41f2b/oauth2/token",
+					"url": "https://login.microsoftonline.com/298296dc-ebf4-4fdf-817e-11533c0c670c/oauth2/token",
 					"method": "POST",
 					"headers": {
 						"Content-Type": "application/x-www-form-urlencoded"
