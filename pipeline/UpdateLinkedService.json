@@ -173,7 +173,14 @@
 			{
 				"name": "GetADToken_copy1",
 				"type": "WebActivity",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "KVRetrieval",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -188,7 +195,31 @@
 					"headers": {
 						"Content-Type": "application/x-www-form-urlencoded"
 					},
-					"body": "grant_type=client_credentials&client_id=5e9f7366-4d11-44b3-a570-4be47fa09f73&client_secret=q7H8Q~QmltuGccE9935KjgkQb2IuIiikOSrGldxe&resource=https://management.azure.com\n"
+					"body": {
+						"value": "@concat('grant_type=client_credentials&client_id=5e9f7366-4d11-44b3-a570-4be47fa09f73&client_secret=',activity('KVRetrieval').output.value, '&resource=https://management.azure.com')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "KVRetrieval",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://updateadf.vault.azure.net/secrets/ADFSecret/7a17f58b72404840812fe55b9d389c11?api-version=7.0",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
 				}
 			}
 		],
