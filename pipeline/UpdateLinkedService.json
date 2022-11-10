@@ -69,7 +69,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "OdataToParquet",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -155,7 +155,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "GetADToken_copy1",
+						"activity": "GetADToken",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -165,13 +165,13 @@
 				"typeProperties": {
 					"variableName": "adtoken",
 					"value": {
-						"value": "@concat('Bearer ', activity('GetADToken_copy1').output.access_token)",
+						"value": "@concat('Bearer ', activity('GetADToken').output.access_token)",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "GetADToken_copy1",
+				"name": "GetADToken",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
