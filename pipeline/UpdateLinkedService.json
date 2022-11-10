@@ -137,7 +137,7 @@
 						"parameters": {
 							"Filesystem": "datalakedevck",
 							"Directory": "Downloaded",
-							"Filename": "bip.parquet"
+							"Filename": "applicant.parquet"
 						}
 					}
 				]
