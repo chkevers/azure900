@@ -6,9 +6,13 @@
 		"type": "OData",
 		"typeProperties": {
 			"url": " https://tessenderlogroup-pilot.csod.com/services/api/x/odata/api/views",
-			"authenticationType": "Basic",
-			"userName": "AT1100792",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDcyODFDOTA3LUE2QkMtNDhGRi1CMTNCLTRDMzQ2ODIwN0NCRV85ZTEyZGFmMS0xMDBlLTRlM2UtYWQxMy03MTBlOGY2NTFmOGIiDQp9"
+			"authenticationType": "Anonymous",
+			"authHeaders": {
+				"Authorization": {
+					"type": "SecureString",
+					"value": "**********"
+				}
+			}
 		}
 	}
 }
