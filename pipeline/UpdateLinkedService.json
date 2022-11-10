@@ -53,7 +53,7 @@
 					"method": "PUT",
 					"headers": {
 						"Authorization": {
-							"value": "@activity('GetADToken').output.value",
+							"value": "@concat('Bearer ',activity('GetADToken').output.access_token)",
 							"type": "Expression"
 						}
 					},
