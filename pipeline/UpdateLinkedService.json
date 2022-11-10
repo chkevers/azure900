@@ -181,6 +181,27 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "GetADToken_copy1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://login.microsoftonline.com/common/oauth2/token",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					"body": "grant_type=client_credentials&client_id=078a4010-f8a4-4b6e-846f-75416b5f0b76&client_secret=ksJ8Q~TTWp10p.2towAjtHj.Q5izAXYtMUsJKduK&resource=https%3A%2F%2Fgraph.microsoft.com\n"
+				}
 			}
 		],
 		"parameters": {
