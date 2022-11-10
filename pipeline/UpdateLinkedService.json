@@ -34,7 +34,7 @@
 						]
 					},
 					{
-						"activity": "GetADToken",
+						"activity": "Set variable2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -158,6 +158,26 @@
 					"variableName": "token",
 					"value": {
 						"value": "@concat('Bearer ', activity('GetCSODToken').output.access_token)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetADToken",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "adtoken",
+					"value": {
+						"value": "@concat('Bearer ', activity('GetADToken').output.access_token)",
 						"type": "Expression"
 					}
 				}
