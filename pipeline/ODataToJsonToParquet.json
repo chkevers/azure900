@@ -1,5 +1,5 @@
 {
-	"name": "OData",
+	"name": "ODataToJsonToParquet",
 	"properties": {
 		"annotations": []
 	}
