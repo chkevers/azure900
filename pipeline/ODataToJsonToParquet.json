@@ -56,6 +56,77 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "JsonToParquet",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "OdataToJson",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DataLake_JSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": "datalakedevck",
+							"FileName": {
+								"value": "@concat(pipeline().parameters.view_name,'.json')",
+								"type": "Expression"
+							},
+							"Directory": "Downloaded"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parquet1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Filesystem": "datalakedevck",
+							"Directory": "Downloaded",
+							"Filename": {
+								"value": "@concat(pipeline().parameters.view_name, '.parquet')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"parameters": {
