@@ -1,6 +1,11 @@
 {
 	"name": "ODataToJsonToParquet",
 	"properties": {
+		"parameters": {
+			"view_name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
